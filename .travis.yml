@@ -1,0 +1,18 @@
+sudo: required
+
+language: python 
+
+python: 
+  - "2.7"
+
+services:
+  - docker
+
+before_install:
+  - cd docker/python2
+  - docker build -t sonata .
+
+script:
+  - pwd
+  - ls -alt
+  - docker images

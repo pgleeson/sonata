@@ -15,9 +15,8 @@ USER root
 ################################################################################
 # Update some Python & Java libraries
 RUN apt-get update && \
-     apt-get install -y default-jdk python-tk python-lxml htop python-pip
-# Required for BMTK
-RUN pip install pandas
+     apt-get install -y default-jdk python-tk python-lxml htop python-pip \
+     python-h5py python-jsonschema python-pandas
 
 
 ################################################################################
@@ -29,6 +28,11 @@ RUN /bin/bash -c "source ~/env/neurosci/bin/activate"
 # Set up NEURON (should be updated in neuralensemble/simulationx:py2...)
 ENV PATH=$PATH:$HOME/env/neurosci/x86_64/bin
 ENV NEURON_HOME=$HOME/env/neurosci/x86_64
+
+#   *****  TODO: Remove need for this!!  *****  
+# Update PyNN to latest NeuroML compatible version... 
+RUN git clone https://github.com/pgleeson/PyNN.git  # pgleeson has the latest NML2 import/export code!
+RUN cd PyNN && $HOME/env/neurosci/bin/python setup.py install && cd -
 
 
 ################################################################################
@@ -53,7 +57,7 @@ RUN git clone https://github.com/Neurosim-lab/netpyne.git && cd netpyne && \
 
 RUN $HOME/env/neurosci/bin/pip install Cython==0.23
 RUN git clone https://github.com/AllenInstitute/bmtk.git && cd bmtk && \
-    python setup.py install ; cd -
+    python setup.py install && cd -
 
 
 ################################################################################
