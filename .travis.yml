@@ -11,7 +11,7 @@ services:
 before_install:
   - cd docker/python2
   - docker build -t sonata .
-  - docker run sonata /bin/sh -c "python versioninfo.py"
+  - docker run sonata /bin/bash -c "python versioninfo.py"
 
 script:
   - pwd
