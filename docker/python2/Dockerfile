@@ -67,7 +67,7 @@ RUN git clone https://github.com/AllenInstitute/bmtk.git && cd bmtk && \
 COPY versioninfo.py .
 
 # Some aliases
-RUN echo '\n\nalias cd..="cd .."\nalias h=history\nalias ll="ls -alt"' >> ~/.bashrc
+RUN echo '\n\nalias cd..="cd .."\nalias h=history\nalias ll="ls -alt"\necho "\n Welcome to the SONATA Docker image. To see what versions of Python libraries are installed type:\n\n    python versioninfo.py\n"' >> ~/.bashrc
 
 RUN echo "Built the main SONATA Docker image!"
 
