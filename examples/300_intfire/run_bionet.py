@@ -1,6 +1,5 @@
 import sys, os
 from bmtk.simulator import bionet
-from bmtk.analyzer.visualization.spikes import plot_spikes
 
 
 def run(config_file):
@@ -9,8 +8,7 @@ def run(config_file):
     net = bionet.BioNetwork.from_config(conf)
     sim = bionet.BioSimulator.from_config(conf, network=net)
     sim.run()
-    #bionet.nrn.quit_execution()
-    plot_spikes('network/v1_nodes.h5', 'network/v1_node_types.csv', 'output/spikes.h5', group_key='pop_name')
+    bionet.nrn.quit_execution()
 
 
 if __name__ == '__main__':
