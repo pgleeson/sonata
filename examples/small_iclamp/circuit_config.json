@@ -15,8 +15,14 @@
   "networks": {
     "nodes": [
       {
-        "nodes_file": "$NETWORK_DIR/small_iclamp_nodes.h5",
-        "node_types_file": "$NETWORK_DIR/small_iclamp_node_types.csv"
+        "nodes_file": "$NETWORK_DIR/smallIClamp_nodes.h5",
+        "node_types_file": "$NETWORK_DIR/smallIClamp_node_types.csv"
+      }
+    ],
+    "edges": [
+      {
+        "edges_file": "$NETWORK_DIR/smallIClamp_smallIClamp_edges.h5",
+        "edge_types_file": "$NETWORK_DIR/smallIClamp_smallIClamp_edge_types.csv"
       }
     ]
   }

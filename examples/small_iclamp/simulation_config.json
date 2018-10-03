@@ -16,7 +16,7 @@
   "target_simulator":"NEST",
 
   "conditions": {
-    "celsius": 34.0,
+    "celsius": 34.4,
     "v_init": -80
   },
 
@@ -26,7 +26,7 @@
  	"current_clamp_1": {
       "input_type": "current_clamp",
       "module": "IClamp",
-      "node_set": "point_nodes",
+      "node_set": "pre_nodes",
       "amp": 190.0,
       "delay": 100.0,
       "duration": 800.0

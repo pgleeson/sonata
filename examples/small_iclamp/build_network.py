@@ -2,7 +2,7 @@ import numpy as np
 from neuron import h
 from bmtk.builder import NetworkBuilder
 
-net = NetworkBuilder("small_iclamp")
+net = NetworkBuilder("smallIClamp")
 
 def generate_positions(N, x0=0.0, x1=300.0, y0=0.0, y1=100.0):
     X = np.random.uniform(x0, x1, N)
@@ -45,7 +45,8 @@ net.add_edges(source={'ei': 'e'}, target={'ei': 'i', 'model_type': 'point_proces
               syn_weight=0.01,
               weight_function='wmax',
               delay=2.0,
-              dynamics_params='instanteneousInh.json')
+              dynamics_params='ExcToInh.json',
+              model_template='static_synapse')
 
 
 net.build()
