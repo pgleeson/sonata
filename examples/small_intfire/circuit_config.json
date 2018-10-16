@@ -17,8 +17,6 @@
         "nodes_file": "$NETWORK_DIR/v1_nodes.h5",
         "node_types_file": "$NETWORK_DIR/v1_node_types.csv"
       },
-      
-
       {
         "nodes_file": "$NETWORK_DIR/tw_nodes.h5",
         "node_types_file": "$NETWORK_DIR/tw_node_types.csv"
@@ -30,10 +28,10 @@
         "edges_file": "$NETWORK_DIR/v1_v1_edges.h5",
         "edge_types_file": "$NETWORK_DIR/v1_v1_edge_types.csv"
       },
-  {
+      {
         "edges_file": "$NETWORK_DIR/tw_v1_edges.h5",
         "edge_types_file": "$NETWORK_DIR/tw_v1_edge_types.csv"
-}
+      }
     ]
   }
 }

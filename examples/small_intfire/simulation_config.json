@@ -21,22 +21,34 @@
     "v_init": -80
   },
 
-  "inputs": {
+  "node_sets_file": "node_sets.json",
 
+  "inputs": {
     "TW_spikes": {
       "input_type": "spikes",
       "module": "h5",
       "input_file": "$INPUT_DIR/tw_spikes.h5",
       "node_set": "tw"
-}
+    }
   },
 
- 
 
   "output":{
-    "log_file": "$OUTPUT_DIR/log.txt",
     "output_dir": "$OUTPUT_DIR",
-    "spikes_file": "$OUTPUT_DIR/spikes.h5",
+    "log_file": "log.txt",
+    "spikes_file": "spikes.h5",
     "spikes_sort_order": "time"
+  },
+  
+  
+  "reports": {
+
+    "membrane_potential": {
+      "cells": "e_nodes",
+      "variable_name": "v",
+      "module": "membrane_report",
+      "sections": "soma"
+    }
   }
+  
 }
