@@ -31,10 +31,12 @@ net.add_nodes(N=per_pop, pop_name='LIF_inh', location='VisL4', ei='i',
               
               
 def recurrent_connections(src_cells, trg_cell, n_syns):
-    if np.random.random() > 0.3:
-        synapses = [n_syns]*len(src_cells)
-    else:
-        synapses = [None]*len(src_cells)
+    
+    # Increasing numbers of synapses per target cell...
+    #print(trg_cell)
+    #print(dir(trg_cell))
+    #print('--- %s'%trg_cell._node_params)
+    synapses = [20 * n_syns* (trg_cell.node_id-per_pop)] *len(src_cells)
     return synapses
 
 
@@ -42,7 +44,7 @@ net.add_edges(source={'ei': 'e'}, target={'ei': 'i', 'model_type': 'point_proces
               iterator='all_to_one',
               connection_rule=recurrent_connections,
               connection_params={'n_syns': 1},
-              syn_weight=0.01,
+              syn_weight=1,
               weight_function='wmax',
               delay=2.0,
               dynamics_params='ExcToInh.json',

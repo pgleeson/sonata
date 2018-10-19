@@ -18,7 +18,14 @@ def plot_data(reports_file, y_axis, title):
     f, axarr = plt.subplots(n_plots, 1)
     f.suptitle(title)
     for i, (gid, soma_index) in enumerate(zip(gids, soma_locs)):
-        axarr[i].plot(time_steps, data_table[:, [soma_index]], label='gid {}'.format(gid))
+        data = data_table[:, [soma_index]]
+        axarr[i].plot(time_steps, data, label='gid {}'.format(gid))
+        fn = 'output/gid_%s.dat'%gid
+        f = open(fn,'w')
+        print('Writing %i points to %s'%(len(time_steps), fn))
+        for ti in range(len(time_steps)):
+            f.write('%s\t%s\n'%(time_steps[ti]/1000,data[ti][0]/1000))
+        f.close()
         axarr[i].legend()
         axarr[i].set_ylabel(y_axis)
         if i < n_plots - 1:
