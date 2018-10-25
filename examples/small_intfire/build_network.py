@@ -25,10 +25,15 @@ def recurrent_connections(src_cells, trg_cell, n_syns):
     return synapses
 
 def recurrent_connections_low(src_cells, trg_cell, n_syns):
-    if np.random.random() > .9:
-        synapses = [n_syns]*len(src_cells)
-    else:
-        synapses = [None]*len(src_cells)
+    
+    synapses = [n_syns*(np.random.random() > .1) for i in range(len(src_cells))]
+ 
+    return synapses
+
+def recurrent_connections_low2(src_cells, trg_cell, n_syns):
+
+    synapses = [n_syns*(np.random.random() > .1) for i in range(len(src_cells))]
+    
     return synapses
 
 '''
@@ -38,7 +43,7 @@ net.add_edges(source={'ei': 'i'}, target={'ei': 'i', 'model_type': 'point_proces
               connection_params={'n_syns': 10},
               syn_weight=0.01,
               weight_function='wmax',
-              delay=2.0,
+              delay=0.0,
               dynamics_params='instanteneousInh.json')
 
 
@@ -49,7 +54,7 @@ net.add_edges(source={'ei': 'i'}, target={'ei': 'e', 'model_type': 'point_proces
               connection_params={'n_syns': 10},
               syn_weight=0.15,
               weight_function='wmax',
-              delay=2.0,
+              delay=0.0,
               dynamics_params='instanteneousInh.json')
 
 
@@ -59,13 +64,13 @@ net.add_edges(source={'ei': 'e'}, target={'pop_name': 'LIF_inh'},
               connection_params={'n_syns': 10},
               syn_weight=0.3,
               weight_function='wmax',
-              delay=2.0,
+              delay=0.0,
               dynamics_params='instanteneousExc.json')
 
 '''
 net.add_edges(source={'ei': 'e'}, target={'pop_name': 'LIF_exc'},
               iterator='all_to_one',
-              connection_rule=recurrent_connections_low,
+              connection_rule=recurrent_connections_low2,
               connection_params={'n_syns': 1},
               syn_weight=0.002,
               weight_function='wmax',
@@ -90,11 +95,11 @@ tw.add_nodes(N=30, pop_name='TW', ei='e', location='TW', model_type='virtual')
 
 tw.add_edges(source=tw.nodes(), target=net.nodes(pop_name='LIF_exc'),
              iterator='all_to_one',
-             connection_rule=recurrent_connections,
+             connection_rule=recurrent_connections_low,
              connection_params={'n_syns': 1},
-             syn_weight=0.1,
+             syn_weight=0.5,
              weight_function='wmax',
-             delay=2.0,
+             delay=0.0,
              dynamics_params='instanteneousExc.json')
 
 '''
@@ -102,7 +107,7 @@ tw.add_edges(source=tw.nodes(), target=net.nodes(pop_name='LIF_inh'),
              connection_rule=1,
              syn_weight=0.2,
              weight_function='wmax',
-             delay=2.0,
+             delay=0.0,
              dynamics_params='instanteneousExc.json')'''
 
 tw.build()

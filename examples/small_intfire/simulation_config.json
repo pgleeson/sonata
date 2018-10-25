@@ -44,7 +44,7 @@
   "reports": {
     "membrane_potential": {
       "cells": "point_nodes",
-      "variable_name": "v",
+      "variable_name": "m",
       "module": "membrane_report",
       "sections": "soma"
     }
