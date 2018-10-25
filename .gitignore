@@ -15,3 +15,4 @@ src/pysonata/sonata/tests/tmp
 /examples/small_intfire/output/log.txt
 /examples/small_intfire/output/membrane_potential.h5
 /examples/small_intfire/output/spikes.h5
+/examples/small_iclamp/output/*.dat

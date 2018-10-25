@@ -44,7 +44,7 @@ net.add_edges(source={'ei': 'e'}, target={'ei': 'i', 'model_type': 'point_proces
               iterator='all_to_one',
               connection_rule=recurrent_connections,
               connection_params={'n_syns': 1},
-              syn_weight=1,
+              syn_weight=10,
               weight_function='wmax',
               delay=2.0,
               dynamics_params='ExcToInh.json',
